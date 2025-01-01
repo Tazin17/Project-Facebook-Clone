@@ -37,7 +37,7 @@ const Header = () => {
                       <div className='absolute top-full left-0 w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg mt-1 z-50'>
                         <div className='p-2'>
                           <div className='flex items-center space-x-8 p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md cursor-pointer '>
-                          <Search className='absolute text-sm text-gray-400 !important'/>
+                          <Search className='absolute text-sm text-gray-400'/>
                           <div className='flex items-center gap-2'>
                             <Avatar>
                               <AvatarImage/>

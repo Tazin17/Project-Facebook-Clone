@@ -1,4 +1,4 @@
-import Header from './components/Header';
+// import Header from './components/Header';
 // "use cilent";
 import "./globals.css";
 import localFont from "next/font/local";
@@ -42,7 +42,7 @@ export default function RootLayout({ children }) {
         defaultTheme="light" // Ensure consistent default
         enableSystem={false} // Disable system preference to test stability
       >
-        <Header/>
+        {/* <Header/> */}
         {children}
       </ThemeProvider>
     </body>
