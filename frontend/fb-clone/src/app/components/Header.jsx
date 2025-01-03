@@ -1,12 +1,30 @@
-"use client"
-import React, { useState } from 'react';
-import { Input } from '@/components/ui/input';
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuItem, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator} from '@/components/ui/dropdown-menu';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
+"use client";
+import React, { useState } from "react";
+import { Input } from "@/components/ui/input";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuItem,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 // import { Search } from 'lucide-react'
-import { Search, Home, Video, Users, Menu, Bell, MessageCircle, LogOut, Moon, Sun } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import {
+  Search,
+  Home,
+  Video,
+  Users,
+  Menu,
+  Bell,
+  MessageCircle,
+  LogOut,
+  Moon,
+  Sun,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import Image from 'next/image';
 // import React from 'react'
