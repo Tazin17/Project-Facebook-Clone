@@ -87,6 +87,15 @@ const RightSideBar = () => {
         ))
     }
         </ul>
+        {sponsors.length>3 && (
+          <Button
+          variant='outline'
+          className="w-full mt-4 dark:text-white"
+          onClick={() => setShowAllSponsors(!showAllSponsors)}
+          >
+            {showAllSponsors ? "Show Less" :"Show More"}
+          </Button>
+        )}
     </CardContent>
 </Card>
   </motion.aside>
