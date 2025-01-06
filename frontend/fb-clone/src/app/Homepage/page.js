@@ -44,7 +44,7 @@ const HomePage = () => {
             />
             <div className="mt-6 space-y-6">
               {posts.map((post) => (
-                <PostCard key={post.id} 
+                <PostCard key={post._id} 
                   post={post}
                 />
               ))}

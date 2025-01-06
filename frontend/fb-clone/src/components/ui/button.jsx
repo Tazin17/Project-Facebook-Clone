@@ -45,4 +45,7 @@ const Button = React.forwardRef(({ className, variant, size, asChild = false, ..
 })
 Button.displayName = "Button"
 
+console.log(Button); // Ensure it's not undefined
+
+
 export { Button, buttonVariants }
