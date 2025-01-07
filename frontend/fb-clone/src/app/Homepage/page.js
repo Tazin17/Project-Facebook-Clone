@@ -24,7 +24,7 @@ const HomePage = () => {
     {
       _id: 1,
       content: "hello world",
-      mediaUrl: "http://localhost",
+      mediaUrl: "https://kidlingoo.com/wp-content/uploads/flowers_name_in_english.jpg",
       mediaType: "image",
     },
   ];

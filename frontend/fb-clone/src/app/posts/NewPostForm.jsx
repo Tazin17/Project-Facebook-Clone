@@ -17,6 +17,11 @@ import { ImageIcon, Laugh, Plus, Video, X } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
+
+
+
+const Picker = dynamic(() => import('emoji-picker-react'),{ssr:false})
 // import { Card, CardContent } from "@/components/ui/card";
 // import React, { useRef, useState } from "react";
 // import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -40,7 +45,12 @@ import { motion } from "framer-motion";
 
 const NewPostForm = ({ isPostFormOpen, setIsPostFormOpen }) => {
   const [isMounted, setIsMounted] = useState(false);
-  const[filePreview, setFilePreview] = useState(null)
+  const [filePreview, setFilePreview] = useState(null);
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [postContent, setPostContent] = useState('')
+  const handleEmojiClick = (emojiObject) =>{
+      setPostContent(prev => prev+emojiObject.emoji)
+  }
   useEffect(() => {
     setIsMounted(true); // Ensures components like Dialog are rendered only after hydration
   }, []);
@@ -120,37 +130,73 @@ const NewPostForm = ({ isPostFormOpen, setIsPostFormOpen }) => {
                 <motion.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity:0, height: 0 }}
+                  exit={{ opacity: 0, height: 0 }}
                   className="relative mt-4 border-2 border-dashed border-gray-300 rounded-lg p-8 flex flex-col items-center justify-center"
                 >
                   <Button
-                    variant= "ghost"
+                    variant="ghost"
                     size="icon"
                     className="absolute top-2 right-2"
                   >
-                      <X className="h-4 w-4"/>
+                    <X className="h-4 w-4" />
                   </Button>
-                  {filePreview ?(
+                  {filePreview ? (
                     fileType.startWith("image") ? (
-                      <img/>
-                    ):(
-                      <video/>
+                      <img />
+                    ) : (
+                      <video />
                     )
-                  ):(<>
-                  <Plus className="h-12 w-12 text-gray-400 mb-2 cursor-pointer"/>
-                  <p className="text-center text-gray-500">Add Photos/Videos</p>
-                  </>)}
-                      <input
-                      type="file" accept="image/*,video/*" className="hidden"
-                      
-                      />
-
+                  ) : (
+                    <>
+                      <Plus className="h-12 w-12 text-gray-400 mb-2 cursor-pointer" />
+                      <p className="text-center text-gray-500">
+                        Add Photos/Videos
+                      </p>
+                    </>
+                  )}
+                  <input
+                    type="file"
+                    accept="image/*,video/*"
+                    className="hidden"
+                  />
                 </motion.div>
               </AnimatePresence>
               <div className="bg-gray-200 dark:bg-muted p-4 rounded-lg mt-4">
-                <P className="font-semibold mb-2"
-                >Add Your Post</P>
+                <p className="font-semibold mb-2">Add Your Post</p>
 
+                <div className="flex space-x-2">
+                  <Button variant="outline" size="icon">
+                    <ImageIcon className="h-4 w-4 text-green-500" />
+                  </Button>
+                  <Button variant="outline" size="icon">
+                    <Video className="h-4 w-4 text-red-500" />
+                  </Button>
+                  <Button variant="outline" size="icon" onClick={() => setShowEmojiPicker(!showEmojiPicker)}>
+                    <Laugh className="h-4 w-4 text-orange-500" />
+                  </Button>
+                </div>
+              </div>
+              {showEmojiPicker && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  className="relative"
+
+                >
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="absolute top-2 right-2 z-10"
+                    onClick = {() => setShowEmojiPicker(false)}
+                  >
+                    <X className="h-4 w-4" />
+                  </Button>
+                  <Picker onEmojiClick={handleEmojiClick}/>
+                </motion.div>
+              )}
+              <div className="flex justify-end mt-4">
+                <Button className="bg-blue-500 text-white">Post</Button>
               </div>
             </DialogContent>
           </Dialog>
@@ -159,4 +205,4 @@ const NewPostForm = ({ isPostFormOpen, setIsPostFormOpen }) => {
     </Card>
   );
 };
-export default NewPostForm
+export default NewPostForm;
