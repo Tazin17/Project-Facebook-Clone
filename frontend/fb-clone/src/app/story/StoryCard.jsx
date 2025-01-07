@@ -458,7 +458,7 @@ const StoryCard = ({ isAddStory, story, userName, avatarLetter }) => {
             </div>
 
             <div className="absolute bottom-2 left-2 right-2">
-              <p className="text-black dark:text-white text-xs font-semibold truncate">
+              <p className="text-gray-100 dark:text-white text-xs font-semibold truncate">
                 {userName}
               </p>
             </div>
